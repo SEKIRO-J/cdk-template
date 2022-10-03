@@ -1,15 +1,14 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
+import * as cdk from '@aws-cdk/core';
 import s3assets = require('@aws-cdk/aws-s3-assets');
 import elasticbeanstalk = require('@aws-cdk/aws-elasticbeanstalk');
 import iam = require('@aws-cdk/aws-iam');
 
 export class MetapierCdkStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
 const webAppZipArchive = new s3assets.Asset(this, 'WebAppZip', {
-    path: `${__dirname}/../app.zip`,
+    path: `${__dirname}/../../app.zip`,
 });
 
 // Create a ElasticBeanStalk app.
